@@ -289,11 +289,11 @@ export default function MarketplacePage() {
   };
 
   return (
-    <div className="p-6 pb-20 lg:pb-6">
+    <div className="w-full max-w-none p-4 md:p-6 pb-20 lg:pb-6">
       {/* Header */}
       <div className="mb-8">
-        <div className="mama-card p-8 bg-gradient-to-r from-purple-600 to-pink-600 text-white">
-          <div className="max-w-4xl">
+        <div className="mama-card p-6 md:p-8 bg-gradient-to-r from-purple-600 to-pink-600 text-white">
+          <div className="w-full max-w-full">
             <h1 className="text-3xl lg:text-4xl font-bold mb-4">
               Mama's <span className="text-yellow-300">Marketplace</span> 🛒
             </h1>
@@ -320,7 +320,7 @@ export default function MarketplacePage() {
       </div>
 
       {/* Stats Bar */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4 mb-8">
         <div className="mama-card p-4 text-center">
           <div className="w-10 h-10 bg-gradient-to-br from-emerald-400 to-teal-500 rounded-lg flex items-center justify-center mx-auto mb-2">
             <Package className="w-5 h-5 text-white" />
@@ -424,14 +424,14 @@ export default function MarketplacePage() {
             <Sparkles className="w-5 h-5 mr-2" />
             Featured Products
           </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
             {products.filter(p => p.featured).slice(0, 3).map((product) => (
               <Link 
                 key={product.id} 
                 href={`/marketplace/product/${product.id}`}
                 className="mama-card p-0 overflow-hidden hover:scale-[1.02] transition-transform group"
               >
-                <div className="relative h-48 bg-gradient-to-br from-orange-200 to-red-200">
+                <div className="relative h-40 md:h-48 bg-gradient-to-br from-orange-200 to-red-200">
                   {product.discount > 0 && (
                     <div className="absolute top-3 left-3 bg-red-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
                       -{product.discount}%
@@ -496,14 +496,14 @@ export default function MarketplacePage() {
           </h2>
         </div>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
           {displayedProducts.map((product) => (
             <Link 
               key={product.id} 
               href={`/marketplace/product/${product.id}`}
               className="mama-card p-0 overflow-hidden hover:scale-[1.02] transition-transform group"
             >
-              <div className="relative h-48 bg-gradient-to-br from-orange-200 to-red-200">
+              <div className="relative h-40 md:h-48 bg-gradient-to-br from-orange-200 to-red-200">
                 {product.discount > 0 && (
                   <div className="absolute top-3 left-3 bg-red-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
                     -{product.discount}%

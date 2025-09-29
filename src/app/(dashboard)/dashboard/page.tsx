@@ -234,8 +234,7 @@ export default function DashboardPage() {
           <div className="lg:col-span-2 space-y-6">
             {/* My Circles */}
             <div className="mama-card p-6">
-              <div className="flex justify-between items-center mb-6">
-                <h3 className="text-xl font-semibold text-burgundy-800">My Circles</h3>
+              <div className="flex justify-end items-center mb-6">
                 <Link href="/circles/create" className="mama-button-primary text-sm">
                   <Plus className="w-4 h-4 mr-2" />
                   New Circle
@@ -298,7 +297,6 @@ export default function DashboardPage() {
 
             {/* Recent Activity */}
             <div className="mama-card p-6">
-              <h3 className="text-xl font-semibold text-burgundy-800 mb-6">Recent Activity</h3>
               
               <div className="space-y-4">
                 {recentActivity.map((activity, index) => (
@@ -331,7 +329,6 @@ export default function DashboardPage() {
               <div className="mama-card p-6">
                 <div className="flex items-center mb-4">
                   <AlertCircle className="w-5 h-5 text-red-500 mr-2" />
-                  <h3 className="text-lg font-semibold text-burgundy-800">Emergency Request</h3>
                 </div>
                 
                 {emergencyRequests.map((request) => (
@@ -403,7 +400,6 @@ export default function DashboardPage() {
 
             {/* Quick Actions */}
             <div className="mama-card p-6">
-              <h3 className="text-lg font-semibold text-burgundy-800 mb-4">Quick Actions</h3>
               
               <div className="space-y-3">
                 <Link 
@@ -466,7 +462,6 @@ export default function DashboardPage() {
 
             {/* Achievement Badges */}
             <div className="mama-card p-6">
-              <h3 className="text-lg font-semibold text-burgundy-800 mb-4">Your Badges</h3>
               
               <div className="grid grid-cols-2 gap-3">
                 {userData.badges.map((badge, index) => (
@@ -501,8 +496,7 @@ export default function DashboardPage() {
         {/* Bottom Section - Recent Transactions */}
         <div className="mt-8">
           <div className="mama-card p-6">
-            <div className="flex justify-between items-center mb-6">
-              <h3 className="text-xl font-semibold text-burgundy-800">Recent Transactions</h3>
+            <div className="flex justify-end items-center mb-6">
               <Link href="/transactions" className="text-burgundy-600 font-medium hover:text-burgundy-800 transition-colors">
                 View All
               </Link>

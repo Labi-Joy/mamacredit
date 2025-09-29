@@ -287,9 +287,6 @@ export default function CirclesPage() {
         {/* Results Summary */}
         <div className="flex justify-between items-center mb-6">
           <div>
-            <h3 className="text-xl font-semibold text-burgundy-800">
-              {filteredCircles.length} Circle{filteredCircles.length !== 1 ? 's' : ''} Found
-            </h3>
             <p className="text-neutral-600">
               {searchTerm && `Showing results for "${searchTerm}"`}
             </p>
@@ -409,7 +406,6 @@ export default function CirclesPage() {
         {filteredCircles.length === 0 && (
           <div className="text-center py-12">
             <Users className="w-16 h-16 text-neutral-300 mx-auto mb-4" />
-            <h3 className="text-lg font-semibold text-neutral-600 mb-2">No circles found</h3>
             <p className="text-neutral-500 mb-6">
               {searchTerm 
                 ? `No circles match "${searchTerm}". Try different keywords or create your own circle.`
@@ -436,7 +432,6 @@ export default function CirclesPage() {
         {/* Call to Action */}
         <div className="mama-card p-8 bg-gradient-to-r from-purple-600 to-pink-600 text-white text-center">
           <Crown className="w-12 h-12 mx-auto mb-4 opacity-80" />
-          <h3 className="text-2xl font-bold mb-3">Don't See Your Perfect Circle?</h3>
           <p className="text-purple-100 mb-6 max-w-2xl mx-auto">
             Create a circle tailored to your community, savings goals, and sisterhood vision. 
             Be the leader your community needs.
