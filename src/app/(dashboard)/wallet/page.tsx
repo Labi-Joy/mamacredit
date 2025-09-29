@@ -645,7 +645,7 @@ export default function WalletPage() {
                 <Code className="w-6 h-6 text-orange-600 mr-3" />
                 <div>
                   <h3 className="font-bold text-burgundy-800">Developer Mode</h3>
-                  <p className="text-sm text-neutral-600">Safe demo of real Hedera contract integration</p>
+                  <p className="text-sm text-neutral-600">Hedera demo contract integration</p>
                 </div>
               </div>
               <button
@@ -718,7 +718,7 @@ export default function WalletPage() {
                       <ul className="space-y-1 text-xs">
                         <li>• Uses your existing Hedera testnet configuration</li>
                         <li>• Connects to real contracts but with minimal test amounts</li>
-                        <li>• Perfect for demonstrating to investors/stakeholders</li>
+                        <li>• This is just for demonstration purposes</li>
                         <li>• No mainnet exposure - completely safe for demos</li>
                       </ul>
                     </div>
@@ -731,7 +731,7 @@ export default function WalletPage() {
                   👆 Toggle Developer Mode to see real Hedera contract integration in action
                 </div>
                 <div className="text-xs text-neutral-500">
-                  (Safe testnet demo mode - perfect for showcasing to investors)
+                  (Safe testnet demo mode)
                 </div>
               </div>
             )}
