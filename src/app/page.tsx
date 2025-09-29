@@ -383,7 +383,7 @@ export default function LandingPage() {
           </div>
           
           <div className="border-t border-neutral-800 mt-12 pt-8 text-center text-neutral-400">
-            <p>&copy; 2025 MamaCredit. Built with ❤️ for African women.</p>
+            <p>&copy; 2025 MamaCredit. Built with ❤️ by Labi-dev for <b>African women</b>.</p>
           </div>
         </div>
       </footer>

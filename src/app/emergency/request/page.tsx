@@ -99,7 +99,7 @@ export default function EmergencyRequestPage() {
     },
     {
       id: 'transport',
-      label: 'Transportation',
+      label: 'Transport',
       icon: <Car className="w-6 h-6" />,
       description: 'Vehicle repairs, transport costs',
       urgency: 'medium',
