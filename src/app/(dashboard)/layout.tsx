@@ -94,7 +94,7 @@ export default function DashboardLayout({
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-amber-50 via-cream to-orange-50">
+    <div className="h-screen bg-gradient-to-br from-amber-50 via-cream to-orange-50 overflow-hidden">
       {/* Mobile Header */}
       <div className="lg:hidden bg-white/80 backdrop-blur-md border-b border-orange-100 sticky top-0 z-50">
         <div className="flex items-center justify-between px-4 py-3">
@@ -122,9 +122,9 @@ export default function DashboardLayout({
         </div>
       </div>
 
-      <div className="flex">
+      <div className="flex h-full">
         {/* Sidebar */}
-        <div className={`fixed inset-y-0 left-0 z-40 w-80 bg-white shadow-xl transform transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static lg:inset-0 ${
+        <div className={`fixed inset-y-0 left-0 z-40 w-80 bg-white shadow-xl transform transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static lg:h-full ${
           isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
         }`}>
           
@@ -256,9 +256,9 @@ export default function DashboardLayout({
         )}
 
         {/* Main Content */}
-        <div className="flex-1 lg:ml-0">
+        <div className="flex-1 lg:ml-0 flex flex-col h-screen overflow-hidden">
           {/* Desktop Header */}
-          <div className="hidden lg:block bg-white/80 backdrop-blur-md border-b border-orange-100 sticky top-0 z-30">
+          <div className="hidden lg:block bg-white/80 backdrop-blur-md border-b border-orange-100 z-30 flex-shrink-0">
             <div className="px-8 py-4">
               <div className="flex items-center justify-between">
                 <div>
@@ -279,13 +279,13 @@ export default function DashboardLayout({
                     {pathname.startsWith('/profile') && 'Your achievements and settings'}
                   </p>
                 </div>
-                
+
                 <div className="flex items-center space-x-4">
                   <button className="p-2 hover:bg-orange-50 rounded-lg transition-colors relative">
                     <Bell className="w-5 h-5 text-neutral-600" />
                     <div className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full"></div>
                   </button>
-                  
+
                   <Link href="/profile" className="flex items-center space-x-3 p-2 hover:bg-orange-50 rounded-lg transition-colors">
                     <div className="w-8 h-8 bg-gradient-to-br from-purple-400 to-pink-500 rounded-full flex items-center justify-center">
                       <span className="text-white font-semibold text-sm">
@@ -302,8 +302,8 @@ export default function DashboardLayout({
             </div>
           </div>
 
-          {/* Page Content */}
-          <main className="min-h-screen">
+          {/* Page Content - Scrollable */}
+          <main className="flex-1 overflow-y-auto">
             {children}
           </main>
         </div>
