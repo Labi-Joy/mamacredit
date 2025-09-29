@@ -94,7 +94,7 @@ export default function DashboardLayout({
   };
 
   return (
-    <div className="h-screen bg-gradient-to-br from-amber-50 via-cream to-orange-50 overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-amber-50 via-cream to-orange-50">
       {/* Mobile Header */}
       <div className="lg:hidden bg-white/80 backdrop-blur-md border-b border-orange-100 sticky top-0 z-50">
         <div className="flex items-center justify-between px-4 py-3">
@@ -122,9 +122,9 @@ export default function DashboardLayout({
         </div>
       </div>
 
-      <div className="flex h-full">
+      <div className="flex">
         {/* Sidebar */}
-        <div className={`fixed inset-y-0 left-0 z-40 w-80 bg-white shadow-xl transform transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static lg:h-full ${
+        <div className={`fixed inset-y-0 left-0 z-40 w-80 bg-white shadow-xl transform transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static lg:inset-0 ${
           isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
         }`}>
           
@@ -256,9 +256,9 @@ export default function DashboardLayout({
         )}
 
         {/* Main Content */}
-        <div className="flex-1 lg:ml-0 flex flex-col h-screen overflow-hidden">
+        <div className="flex-1 lg:ml-0">
           {/* Desktop Header */}
-          <div className="hidden lg:block bg-white/80 backdrop-blur-md border-b border-orange-100 z-30 flex-shrink-0">
+          <div className="hidden lg:block bg-white/80 backdrop-blur-md border-b border-orange-100 sticky top-0 z-30">
             <div className="px-8 py-4">
               <div className="flex items-center justify-between">
                 <div>
@@ -302,8 +302,8 @@ export default function DashboardLayout({
             </div>
           </div>
 
-          {/* Page Content - Scrollable */}
-          <main className="flex-1 overflow-y-auto">
+          {/* Page Content */}
+          <main className="min-h-screen">
             {children}
           </main>
         </div>

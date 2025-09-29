@@ -25,13 +25,22 @@ import {
   Activity,
   Award,
   Zap,
-  Info
+  Info,
+  Code,
+  Wifi,
+  WifiOff
 } from 'lucide-react';
+import { useHedera } from '@/lib/hooks/use-hedera';
 
 export default function WalletPage() {
   const [isBalanceVisible, setIsBalanceVisible] = useState(true);
   const [isConnecting, setIsConnecting] = useState(false);
   const [selectedTab, setSelectedTab] = useState('overview');
+  const [showRealIntegration, setShowRealIntegration] = useState(false);
+  const [isDeveloperMode, setIsDeveloperMode] = useState(false);
+
+  // Real Hedera integration hook
+  const hedera = useHedera();
 
   // Mock wallet data - in production, this comes from Hedera SDK
   const walletData = {
@@ -627,6 +636,105 @@ export default function WalletPage() {
               </div>
               <Zap className="w-16 h-16 opacity-50" />
             </div>
+          </div>
+
+          {/* Developer Mode Integration Demo */}
+          <div className="mama-card p-6 border-2 border-dashed border-orange-200 bg-orange-50/50">
+            <div className="flex items-center justify-between mb-4">
+              <div className="flex items-center">
+                <Code className="w-6 h-6 text-orange-600 mr-3" />
+                <div>
+                  <h3 className="font-bold text-burgundy-800">Developer Mode</h3>
+                  <p className="text-sm text-neutral-600">Safe demo of real Hedera contract integration</p>
+                </div>
+              </div>
+              <button
+                onClick={() => setIsDeveloperMode(!isDeveloperMode)}
+                className={`flex items-center px-4 py-2 rounded-lg font-medium transition-all ${
+                  isDeveloperMode
+                    ? 'bg-orange-500 text-white shadow-lg'
+                    : 'bg-white text-orange-600 border border-orange-200 hover:bg-orange-50'
+                }`}
+              >
+                {isDeveloperMode ? <Wifi className="w-4 h-4 mr-2" /> : <WifiOff className="w-4 h-4 mr-2" />}
+                {isDeveloperMode ? 'Live' : 'Demo'}
+              </button>
+            </div>
+
+            {isDeveloperMode ? (
+              <div className="space-y-4">
+                <div className="bg-white rounded-lg p-4 border border-orange-200">
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-sm font-medium text-burgundy-800">Real Hedera Connection</span>
+                    <div className="flex items-center text-sm text-green-600">
+                      <div className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></div>
+                      {hedera.walletState.isConnected ? 'Connected' : 'Disconnected'}
+                    </div>
+                  </div>
+
+                  {hedera.walletState.isConnected ? (
+                    <div className="space-y-2 text-sm">
+                      <div className="flex justify-between">
+                        <span className="text-neutral-600">Account:</span>
+                        <code className="text-burgundy-800">{hedera.walletState.accountId}</code>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-neutral-600">Real HBAR:</span>
+                        <span className="text-burgundy-800">{hedera.walletState.balance.hbar.toFixed(4)} ℏ</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-neutral-600">Real MAMA:</span>
+                        <span className="text-burgundy-800">{hedera.walletState.balance.mama} MAMA</span>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="text-center py-4">
+                      <button
+                        onClick={() => hedera.connectWallet()}
+                        className="mama-button-secondary text-sm"
+                        disabled={hedera.walletState.isLoading}
+                      >
+                        {hedera.walletState.isLoading ? (
+                          <>
+                            <RefreshCw className="w-4 h-4 mr-2 animate-spin" />
+                            Connecting...
+                          </>
+                        ) : (
+                          <>
+                            <Wallet className="w-4 h-4 mr-2" />
+                            Connect Real Wallet
+                          </>
+                        )}
+                      </button>
+                    </div>
+                  )}
+                </div>
+
+                <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                  <div className="flex items-start">
+                    <Info className="w-5 h-5 text-blue-600 mr-2 mt-0.5 flex-shrink-0" />
+                    <div className="text-sm text-blue-800">
+                      <p className="font-medium mb-1">Safe Integration Demo:</p>
+                      <ul className="space-y-1 text-xs">
+                        <li>• Uses your existing Hedera testnet configuration</li>
+                        <li>• Connects to real contracts but with minimal test amounts</li>
+                        <li>• Perfect for demonstrating to investors/stakeholders</li>
+                        <li>• No mainnet exposure - completely safe for demos</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div className="text-center py-6">
+                <div className="text-neutral-600 mb-2">
+                  👆 Toggle Developer Mode to see real Hedera contract integration in action
+                </div>
+                <div className="text-xs text-neutral-500">
+                  (Safe testnet demo mode - perfect for showcasing to investors)
+                </div>
+              </div>
+            )}
           </div>
         </>
       )}

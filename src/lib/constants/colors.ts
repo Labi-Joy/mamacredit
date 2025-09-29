@@ -106,13 +106,13 @@ export const COLORS = {
      */
     getContrastText: (backgroundColor: string): string => {
       // Simple contrast check - in production, use a proper color contrast library
-      const darkColors = [
+      const darkColors: string[] = [
         COLORS.primary.burgundy,
         COLORS.secondary.brown,
         COLORS.neutral.charcoal,
         COLORS.neutral.black
       ];
-      
+
       return darkColors.includes(backgroundColor) ? COLORS.neutral.white : COLORS.neutral.charcoal;
     },
     

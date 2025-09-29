@@ -42,7 +42,7 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
 
-  /* MamaCredit Brand Colors */
+  /* MamaCredit Burgundy Color Palette */
   --color-burgundy-50: #fef2f4;
   --color-burgundy-100: #fde6e9;
   --color-burgundy-200: #fccdd6;
@@ -55,15 +55,11 @@
   --color-burgundy-900: #881337;
   --color-burgundy-950: #4c0519;
 
-  /* Brand Accent Colors */
+  /* Brand Colors */
   --color-cream: #FAF9F6;
   --color-terracotta: #E76F51;
   --color-sage: #2A9D8F;
   --color-gold: #F4A261;
-
-  /* Additional Brand Colors */
-  --color-burgundy-primary: #8B1538;
-  --color-burgundy-secondary: #A91B47;
 }
 
 :root {
@@ -214,46 +210,51 @@
   }
 }
 
-/* MamaCredit Burgundy Utility Classes */
-.text-burgundy-50 { color: var(--color-burgundy-50); }
-.text-burgundy-100 { color: var(--color-burgundy-100); }
-.text-burgundy-200 { color: var(--color-burgundy-200); }
-.text-burgundy-300 { color: var(--color-burgundy-300); }
-.text-burgundy-400 { color: var(--color-burgundy-400); }
-.text-burgundy-500 { color: var(--color-burgundy-500); }
-.text-burgundy-600 { color: var(--color-burgundy-600); }
-.text-burgundy-700 { color: var(--color-burgundy-700); }
-.text-burgundy-800 { color: var(--color-burgundy-800); }
-.text-burgundy-900 { color: var(--color-burgundy-900); }
-.text-burgundy-950 { color: var(--color-burgundy-950); }
+/* MamaCredit Brand Colors - Direct Implementation */
+.text-burgundy-50 { color: #fef2f4 !important; }
+.text-burgundy-100 { color: #fde6e9 !important; }
+.text-burgundy-200 { color: #fccdd6 !important; }
+.text-burgundy-300 { color: #f9a8b5 !important; }
+.text-burgundy-400 { color: #f4708a !important; }
+.text-burgundy-500 { color: #ec4b6b !important; }
+.text-burgundy-600 { color: #A91B47 !important; }
+.text-burgundy-700 { color: #be1e3e !important; }
+.text-burgundy-800 { color: #8B1538 !important; }
+.text-burgundy-900 { color: #881337 !important; }
+.text-burgundy-950 { color: #4c0519 !important; }
 
-.bg-burgundy-50 { background-color: var(--color-burgundy-50); }
-.bg-burgundy-100 { background-color: var(--color-burgundy-100); }
-.bg-burgundy-200 { background-color: var(--color-burgundy-200); }
-.bg-burgundy-300 { background-color: var(--color-burgundy-300); }
-.bg-burgundy-400 { background-color: var(--color-burgundy-400); }
-.bg-burgundy-500 { background-color: var(--color-burgundy-500); }
-.bg-burgundy-600 { background-color: var(--color-burgundy-600); }
-.bg-burgundy-700 { background-color: var(--color-burgundy-700); }
-.bg-burgundy-800 { background-color: var(--color-burgundy-800); }
-.bg-burgundy-900 { background-color: var(--color-burgundy-900); }
-.bg-burgundy-950 { background-color: var(--color-burgundy-950); }
+.bg-burgundy-50 { background-color: #fef2f4 !important; }
+.bg-burgundy-100 { background-color: #fde6e9 !important; }
+.bg-burgundy-200 { background-color: #fccdd6 !important; }
+.bg-burgundy-300 { background-color: #f9a8b5 !important; }
+.bg-burgundy-400 { background-color: #f4708a !important; }
+.bg-burgundy-500 { background-color: #ec4b6b !important; }
+.bg-burgundy-600 { background-color: #A91B47 !important; }
+.bg-burgundy-700 { background-color: #be1e3e !important; }
+.bg-burgundy-800 { background-color: #8B1538 !important; }
+.bg-burgundy-900 { background-color: #881337 !important; }
+.bg-burgundy-950 { background-color: #4c0519 !important; }
 
-.border-burgundy-50 { border-color: var(--color-burgundy-50); }
-.border-burgundy-100 { border-color: var(--color-burgundy-100); }
-.border-burgundy-200 { border-color: var(--color-burgundy-200); }
-.border-burgundy-300 { border-color: var(--color-burgundy-300); }
-.border-burgundy-400 { border-color: var(--color-burgundy-400); }
-.border-burgundy-500 { border-color: var(--color-burgundy-500); }
-.border-burgundy-600 { border-color: var(--color-burgundy-600); }
-.border-burgundy-700 { border-color: var(--color-burgundy-700); }
-.border-burgundy-800 { border-color: var(--color-burgundy-800); }
-.border-burgundy-900 { border-color: var(--color-burgundy-900); }
-.border-burgundy-950 { border-color: var(--color-burgundy-950); }
+.border-burgundy-50 { border-color: #fef2f4 !important; }
+.border-burgundy-100 { border-color: #fde6e9 !important; }
+.border-burgundy-200 { border-color: #fccdd6 !important; }
+.border-burgundy-300 { border-color: #f9a8b5 !important; }
+.border-burgundy-400 { border-color: #f4708a !important; }
+.border-burgundy-500 { border-color: #ec4b6b !important; }
+.border-burgundy-600 { border-color: #A91B47 !important; }
+.border-burgundy-700 { border-color: #be1e3e !important; }
+.border-burgundy-800 { border-color: #8B1538 !important; }
+.border-burgundy-900 { border-color: #881337 !important; }
+.border-burgundy-950 { border-color: #4c0519 !important; }
 
-.from-burgundy-600 { --tw-gradient-from: var(--color-burgundy-600) var(--tw-gradient-from-position); }
-.to-burgundy-600 { --tw-gradient-to: var(--color-burgundy-600) var(--tw-gradient-to-position); }
-.via-burgundy-600 { --tw-gradient-to: var(--color-burgundy-600) var(--tw-gradient-to-position); --tw-gradient-stops: var(--tw-gradient-from), var(--color-burgundy-600) var(--tw-gradient-via-position), var(--tw-gradient-to); }
+.hover\:text-burgundy-600:hover { color: #A91B47 !important; }
+.hover\:text-burgundy-800:hover { color: #8B1538 !important; }
+.hover\:bg-burgundy-50:hover { background-color: #fef2f4 !important; }
 
-.bg-cream { background-color: var(--color-cream); }
-.via-cream { --tw-gradient-to: var(--color-cream) var(--tw-gradient-to-position); --tw-gradient-stops: var(--tw-gradient-from), var(--color-cream) var(--tw-gradient-via-position), var(--tw-gradient-to); }
+.from-burgundy-600 { --tw-gradient-from: #A91B47 !important; }
+.to-burgundy-600 { --tw-gradient-to: #A91B47 !important; }
+.from-red-600 { --tw-gradient-from: #dc2626 !important; }
+.to-red-600 { --tw-gradient-to: #dc2626 !important; }
+
+.bg-cream { background-color: #FAF9F6 !important; }
+.via-cream { --tw-gradient-stops: var(--tw-gradient-from), #FAF9F6 var(--tw-gradient-via-position), var(--tw-gradient-to) !important; }

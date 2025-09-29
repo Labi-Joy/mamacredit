@@ -263,6 +263,10 @@ export default function MarketplacePage() {
     }
   });
 
+  // Pagination to prevent overflow
+  const PRODUCTS_PER_PAGE = 12;
+  const displayedProducts = sortedProducts.slice(0, PRODUCTS_PER_PAGE);
+
   const formatCurrency = (amount: number) => {
     return new Intl.NumberFormat('en-NG', {
       style: 'currency',
@@ -493,7 +497,7 @@ export default function MarketplacePage() {
         </div>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {sortedProducts.map((product) => (
+          {displayedProducts.map((product) => (
             <Link 
               key={product.id} 
               href={`/marketplace/product/${product.id}`}
@@ -586,6 +590,24 @@ export default function MarketplacePage() {
             </Link>
           ))}
         </div>
+
+        {/* Load More Products Button */}
+        {sortedProducts.length > PRODUCTS_PER_PAGE && (
+          <div className="text-center mt-8">
+            <div className="mama-card p-6 bg-gradient-to-r from-orange-50 to-red-50 border border-orange-200">
+              <p className="text-neutral-600 mb-4">
+                Showing {displayedProducts.length} of {sortedProducts.length} products
+              </p>
+              <Link
+                href="/marketplace/all"
+                className="mama-button-primary inline-flex items-center"
+              >
+                <Eye className="w-4 h-4 mr-2" />
+                View All Products
+              </Link>
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Empty State */}
