@@ -79,6 +79,10 @@ export const metadata: Metadata = {
     google: 'your-google-verification-code',
   },
   category: 'financial technology',
+  icons: {
+    icon: '/favicon.svg',
+    apple: '/favicon.svg',
+  },
 }
 
 export default function RootLayout({
@@ -103,8 +107,8 @@ export default function RootLayout({
         
         {/* Favicon and Icons */}
         <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="icon" href="/icon.svg" type="image/svg+xml" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/favicon.svg" />
         <link rel="manifest" href="/manifest.json" />
         
         {/* Prevent zoom on iOS */}

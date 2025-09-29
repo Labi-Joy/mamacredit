@@ -62,7 +62,7 @@ export default function MarketplacePage() {
         circle: 'Lagos Market Queens',
         isVerified: true
       },
-      images: ['/placeholder-product-1.jpg', '/placeholder-product-1b.jpg'],
+      images: ['/images/illustrations/haircare.png'],
       category: 'beauty',
       tags: ['organic', 'handmade', 'natural'],
       inStock: true,
@@ -128,7 +128,7 @@ export default function MarketplacePage() {
         circle: 'Young Professionals United',
         isVerified: true
       },
-      images: ['/placeholder-product-3.jpg'],
+      images: ['/images/illustrations/spices.png'],
       category: 'food',
       tags: ['homemade', 'snacks', 'fresh'],
       inStock: true,
@@ -431,7 +431,15 @@ export default function MarketplacePage() {
                 href={`/marketplace/product/${product.id}`}
                 className="mama-card p-0 overflow-hidden hover:scale-[1.02] transition-transform group"
               >
-                <div className="relative h-40 md:h-48 bg-gradient-to-br from-orange-200 to-red-200">
+                <div className="relative h-40 md:h-48 bg-gradient-to-br from-orange-200 to-red-200 overflow-hidden">
+                <img
+                  src={product.images[0]}
+                  alt={product.title}
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    e.currentTarget.style.display = 'none';
+                  }}
+                />
                   {product.discount > 0 && (
                     <div className="absolute top-3 left-3 bg-red-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
                       -{product.discount}%
@@ -503,7 +511,15 @@ export default function MarketplacePage() {
               href={`/marketplace/product/${product.id}`}
               className="mama-card p-0 overflow-hidden hover:scale-[1.02] transition-transform group"
             >
-              <div className="relative h-40 md:h-48 bg-gradient-to-br from-orange-200 to-red-200">
+              <div className="relative h-40 md:h-48 bg-gradient-to-br from-orange-200 to-red-200 overflow-hidden">
+                <img
+                  src={product.images[0]}
+                  alt={product.title}
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    e.currentTarget.style.display = 'none';
+                  }}
+                />
                 {product.discount > 0 && (
                   <div className="absolute top-3 left-3 bg-red-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
                     -{product.discount}%

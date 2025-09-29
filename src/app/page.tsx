@@ -37,19 +37,19 @@ export default function LandingPage() {
       name: "Amina Ibrahim",
       role: "Circle Leader, Lagos",
       text: "MamaCredit saved my family when my husband fell ill. My sisters had my back in 24 hours!",
-      image: "/placeholder-woman-1.jpg" // You'll add actual images
+      image: "/images/avatars/avatar1.png"
     },
     {
       name: "Fatima Adeola",
-      role: "Entrepreneur, Kano", 
+      role: "Entrepreneur, Kano",
       text: "I used my circle payout to start my fabric business. Now I employ 5 other women!",
-      image: "/placeholder-woman-2.jpg"
+      image: "/images/avatars/avatar2.png"
     },
     {
       name: "Grace Okafor",
       role: "Teacher, Abuja",
       text: "Learning about crypto through MamaCredit was so easy. My daughters are proud of their tech-savvy mama!",
-      image: "/placeholder-woman-3.jpg"
+      image: "/images/avatars/avatar3.png"
     }
   ];
 
@@ -163,9 +163,13 @@ export default function LandingPage() {
             </div>
 
             <div className={`relative ${isVisible ? 'animate-slide-in-left' : 'opacity-0'}`}>
-              {/* Placeholder for hero image */}
-              <div className="relative h-96 lg:h-[500px] bg-gradient-to-br from-orange-200 to-red-200 rounded-3xl overflow-hidden shadow-mama-strong">
-                <div className="absolute inset-0 pattern-dots"></div>
+              {/* Hero Image */}
+              <div className="relative h-96 lg:h-[500px] rounded-3xl overflow-hidden shadow-mama-strong">
+                <img
+                  src="/images/illustrations/hero.png"
+                  alt="African women in traditional savings circle gathering"
+                  className="w-full h-full object-cover"
+                />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                 <div className="absolute bottom-8 left-8 right-8">
                   <div className="bg-white/90 backdrop-blur-md rounded-2xl p-6">
