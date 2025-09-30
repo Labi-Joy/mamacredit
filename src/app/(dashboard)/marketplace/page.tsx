@@ -99,7 +99,7 @@ export default function MarketplacePage() {
         circle: 'Lagos Market Queens',
         isVerified: true
       },
-      images: ['/placeholder-product-2.jpg'],
+      images: ['/images/illustrations/clothes1.png'],
       category: 'fashion',
       tags: ['ankara', 'handmade', 'pack'],
       inStock: true,
@@ -145,7 +145,7 @@ export default function MarketplacePage() {
           id: 1,
           buyer: 'Khadija M.',
           rating: 5,
-          comment: 'Best chin chin I\'ve ever tasted! Ordering again next week 😍',
+          comment: "Best chin chin I've ever tasted! Ordering again next week 😍",
           date: '2025-04-01'
         }
       ]
@@ -165,7 +165,7 @@ export default function MarketplacePage() {
         circle: 'Abuja Sisters Circle',
         isVerified: true
       },
-      images: ['/placeholder-service-1.jpg'],
+      images: ['/images/illustrations/babyclothes.png'],
       category: 'services',
       tags: ['childcare', 'professional', 'trusted'],
       inStock: true,
@@ -194,7 +194,7 @@ export default function MarketplacePage() {
         circle: 'Young Professionals United',
         isVerified: true
       },
-      images: ['/placeholder-product-5.jpg'],
+      images: ['/images/illustrations/baskets_pottery.png'],
       category: 'home',
       tags: ['handwoven', 'traditional', 'set'],
       inStock: true,
@@ -223,7 +223,7 @@ export default function MarketplacePage() {
         circle: 'Lagos Market Queens',
         isVerified: true
       },
-      images: ['/placeholder-service-2.jpg'],
+      images: ['/images/illustrations/homedecor.png'],
       category: 'services',
       tags: ['tailoring', 'school', 'custom'],
       inStock: true,
@@ -289,11 +289,11 @@ export default function MarketplacePage() {
   };
 
   return (
-    <div className="w-full max-w-none p-4 md:p-6 pb-20 lg:pb-6">
+    <div className="p-6 pb-20 lg:pb-6 overflow-x-hidden">
       {/* Header */}
       <div className="mb-8">
         <div className="mama-card p-6 md:p-8 bg-gradient-to-r from-purple-600 to-pink-600 text-white">
-          <div className="w-full max-w-full">
+          <div>
             <h1 className="text-3xl lg:text-4xl font-bold mb-4">
               Mama's <span className="text-yellow-300">Marketplace</span> 🛒
             </h1>
@@ -320,7 +320,7 @@ export default function MarketplacePage() {
       </div>
 
       {/* Stats Bar */}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4 mb-8">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 mb-8">
         <div className="mama-card p-4 text-center">
           <div className="w-10 h-10 bg-gradient-to-br from-emerald-400 to-teal-500 rounded-lg flex items-center justify-center mx-auto mb-2">
             <Package className="w-5 h-5 text-white" />
@@ -424,7 +424,7 @@ export default function MarketplacePage() {
             <Sparkles className="w-5 h-5 mr-2" />
             Featured Products
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
             {products.filter(p => p.featured).slice(0, 3).map((product) => (
               <Link 
                 key={product.id} 
@@ -504,7 +504,7 @@ export default function MarketplacePage() {
           </h2>
         </div>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
           {displayedProducts.map((product) => (
             <Link 
               key={product.id} 

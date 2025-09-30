@@ -41,9 +41,9 @@ export default function ProductDetailPage() {
     originalPrice: 4500,
     discount: 22,
     images: [
-      '/placeholder-product-1.jpg',
-      '/placeholder-product-1b.jpg',
-      '/placeholder-product-1c.jpg'
+      '/images/illustrations/haircare.png',
+      '/images/illustrations/baskets_pottery.png',
+      '/images/illustrations/homedecor.png'
     ],
     seller: {
       id: 'seller_1',
@@ -128,7 +128,7 @@ export default function ProductDetailPage() {
         id: 'prod_2',
         title: 'Ankara Print Face Masks',
         price: 2800,
-        image: '/placeholder-product-2.jpg',
+        image: '/images/illustrations/clothes1.png',
         seller: 'Grace Okafor',
         rating: 4.8
       },
@@ -136,7 +136,7 @@ export default function ProductDetailPage() {
         id: 'prod_3',
         title: 'Homemade Chin Chin',
         price: 1500,
-        image: '/placeholder-product-3.jpg',
+        image: '/images/illustrations/spices.png',
         seller: 'Blessing Eze',
         rating: 4.7
       }
