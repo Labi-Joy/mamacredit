@@ -160,7 +160,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Contact & Support
 
-- **Website**: [MamaCredit Live Demo](your-vercel-url)
+- **Website**: [MamaCredit Live Demo](mamacredit.vercel.app)
 - **GitHub**: [github.com/Labi-Joy/mamacredit](https://github.com/Labi-Joy/mamacredit)
 - **Issues**: Report bugs and request features via GitHub Issues
 
