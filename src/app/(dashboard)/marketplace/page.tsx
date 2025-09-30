@@ -289,19 +289,19 @@ export default function MarketplacePage() {
   };
 
   return (
-    <div className="p-6 pb-20 lg:pb-6 overflow-x-hidden">
+    <div className="container-responsive pb-20 lg:pb-6 min-h-screen">
       {/* Header */}
-      <div className="mb-8">
-        <div className="mama-card p-6 md:p-8 bg-gradient-to-r from-purple-600 to-pink-600 text-white">
+      <div className="mb-6 sm:mb-8">
+        <div className="mama-card p-4 sm:p-6 md:p-8 bg-gradient-to-r from-purple-600 to-pink-600 text-white">
           <div>
-            <h1 className="text-3xl lg:text-4xl font-bold mb-4">
+            <h1 className="text-responsive-xl font-bold mb-3 sm:mb-4">
               Mama's <span className="text-yellow-300">Marketplace</span> 🛒
             </h1>
-            <p className="text-purple-100 text-lg mb-6">
-              "Many hands make light work" - Shop with your sisters, support their businesses, 
+            <p className="text-purple-100 text-responsive-base mb-4 sm:mb-6 leading-relaxed">
+              "Many hands make light work" - Shop with your sisters, support their businesses,
               and build wealth together. Every purchase strengthens our community.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
               <div className="flex items-center text-purple-200">
                 <Shield className="w-5 h-5 mr-2" />
                 <span>Sister-Verified Sellers</span>
@@ -320,92 +320,96 @@ export default function MarketplacePage() {
       </div>
 
       {/* Stats Bar */}
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 mb-8">
-        <div className="mama-card p-4 text-center">
-          <div className="w-10 h-10 bg-gradient-to-br from-emerald-400 to-teal-500 rounded-lg flex items-center justify-center mx-auto mb-2">
-            <Package className="w-5 h-5 text-white" />
+      <div className="grid-responsive-4 mb-6 sm:mb-8">
+        <div className="mama-card p-3 sm:p-4 text-center">
+          <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-emerald-400 to-teal-500 rounded-lg flex items-center justify-center mx-auto mb-2">
+            <Package className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
           </div>
-          <div className="text-lg font-bold text-burgundy-800">{products.length}</div>
-          <div className="text-sm text-neutral-600">Products</div>
+          <div className="text-base sm:text-lg font-bold text-burgundy-800">{products.length}</div>
+          <div className="text-xs sm:text-sm text-neutral-600">Products</div>
         </div>
-        
-        <div className="mama-card p-4 text-center">
-          <div className="w-10 h-10 bg-gradient-to-br from-orange-400 to-red-500 rounded-lg flex items-center justify-center mx-auto mb-2">
-            <User className="w-5 h-5 text-white" />
+
+        <div className="mama-card p-3 sm:p-4 text-center">
+          <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-orange-400 to-red-500 rounded-lg flex items-center justify-center mx-auto mb-2">
+            <User className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
           </div>
-          <div className="text-lg font-bold text-burgundy-800">24</div>
-          <div className="text-sm text-neutral-600">Sister Sellers</div>
+          <div className="text-base sm:text-lg font-bold text-burgundy-800">24</div>
+          <div className="text-xs sm:text-sm text-neutral-600">Sister Sellers</div>
         </div>
-        
-        <div className="mama-card p-4 text-center">
-          <div className="w-10 h-10 bg-gradient-to-br from-blue-400 to-indigo-500 rounded-lg flex items-center justify-center mx-auto mb-2">
-            <TrendingUp className="w-5 h-5 text-white" />
+
+        <div className="mama-card p-3 sm:p-4 text-center">
+          <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-blue-400 to-indigo-500 rounded-lg flex items-center justify-center mx-auto mb-2">
+            <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
           </div>
-          <div className="text-lg font-bold text-burgundy-800">₦2.3M</div>
-          <div className="text-sm text-neutral-600">Sister Sales</div>
+          <div className="text-base sm:text-lg font-bold text-burgundy-800">₦2.3M</div>
+          <div className="text-xs sm:text-sm text-neutral-600">Sister Sales</div>
         </div>
-        
-        <div className="mama-card p-4 text-center">
-          <div className="w-10 h-10 bg-gradient-to-br from-purple-400 to-pink-500 rounded-lg flex items-center justify-center mx-auto mb-2">
-            <Star className="w-5 h-5 text-white" />
+
+        <div className="mama-card p-3 sm:p-4 text-center">
+          <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-purple-400 to-pink-500 rounded-lg flex items-center justify-center mx-auto mb-2">
+            <Star className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
           </div>
-          <div className="text-lg font-bold text-burgundy-800">4.8</div>
-          <div className="text-sm text-neutral-600">Avg Rating</div>
+          <div className="text-base sm:text-lg font-bold text-burgundy-800">4.8</div>
+          <div className="text-xs sm:text-sm text-neutral-600">Avg Rating</div>
         </div>
       </div>
 
       {/* Search and Filters */}
-      <div className="mama-card p-6 mb-8">
-        <div className="flex flex-col lg:flex-row gap-4">
+      <div className="mama-card p-4 sm:p-6 mb-6 sm:mb-8">
+        <div className="flex flex-col gap-3 sm:gap-4">
           {/* Search Bar */}
-          <div className="flex-1 relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-neutral-400" />
+          <div className="relative">
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 sm:w-5 sm:h-5 text-neutral-400" />
             <input
               type="text"
-              placeholder="Search products, sellers, or descriptions..."
-              className="mama-input pl-10"
+              placeholder="Search products, sellers..."
+              className="mama-input pl-10 sm:pl-12 text-sm sm:text-base"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
           </div>
-          
-          {/* Sort Dropdown */}
-          <select
-            value={sortBy}
-            onChange={(e) => setSortBy(e.target.value)}
-            className="mama-input lg:w-48"
-          >
-            <option value="recent">Most Recent</option>
-            <option value="popular">Most Popular</option>
-            <option value="rating">Highest Rated</option>
-            <option value="price_low">Price: Low to High</option>
-            <option value="price_high">Price: High to Low</option>
-          </select>
-          
-          {/* Sell Button */}
-          <Link href="/marketplace/sell" className="mama-button-primary whitespace-nowrap">
-            <Plus className="w-4 h-4 mr-2" />
-            Sell Products
-          </Link>
+
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+            {/* Sort Dropdown */}
+            <select
+              value={sortBy}
+              onChange={(e) => setSortBy(e.target.value)}
+              className="mama-input flex-1 sm:max-w-xs text-sm sm:text-base"
+            >
+              <option value="recent">Most Recent</option>
+              <option value="popular">Most Popular</option>
+              <option value="rating">Highest Rated</option>
+              <option value="price_low">Price: Low to High</option>
+              <option value="price_high">Price: High to Low</option>
+            </select>
+
+            {/* Sell Button */}
+            <Link href="/marketplace/sell" className="mama-button-primary whitespace-nowrap justify-center sm:justify-start">
+              <Plus className="w-4 h-4 mr-2" />
+              <span className="hidden sm:inline">Sell Products</span>
+              <span className="sm:hidden">Sell</span>
+            </Link>
+          </div>
         </div>
       </div>
 
       {/* Categories */}
-      <div className="mb-8">
-        <div className="flex overflow-x-auto pb-4 gap-3 scrollbar-hide">
+      <div className="mb-6 sm:mb-8">
+        <div className="flex overflow-x-auto pb-4 gap-2 sm:gap-3 scrollbar-hide">
           {categories.map((category) => (
             <button
               key={category.id}
               onClick={() => setSelectedCategory(category.id)}
-              className={`flex items-center px-4 py-3 rounded-xl font-medium transition-all whitespace-nowrap ${
+              className={`flex items-center px-3 sm:px-4 py-2 sm:py-3 rounded-xl font-medium transition-all whitespace-nowrap text-sm sm:text-base ${
                 selectedCategory === category.id
                   ? 'bg-gradient-to-r from-orange-400 to-red-500 text-white'
                   : 'bg-white text-burgundy-600 hover:bg-orange-50 border border-orange-100'
               }`}
             >
-              {category.icon}
-              <span className="ml-2">{category.name}</span>
-              <span className={`ml-2 px-2 py-1 rounded-full text-xs ${
+              <span className="w-4 h-4 sm:w-5 sm:h-5">{category.icon}</span>
+              <span className="ml-1 sm:ml-2 hidden sm:inline">{category.name}</span>
+              <span className="ml-1 sm:ml-2 sm:hidden">{category.name.split(' ')[0]}</span>
+              <span className={`ml-1 sm:ml-2 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full text-xs ${
                 selectedCategory === category.id
                   ? 'bg-white/20 text-white'
                   : 'bg-orange-100 text-burgundy-700'
@@ -419,12 +423,12 @@ export default function MarketplacePage() {
 
       {/* Featured Products */}
       {selectedCategory === 'all' && (
-        <div className="mb-8">
-          <h2 className="text-xl font-semibold text-burgundy-800 mb-4 flex items-center">
-            <Sparkles className="w-5 h-5 mr-2" />
+        <div className="mb-6 sm:mb-8">
+          <h2 className="text-lg sm:text-xl font-semibold text-burgundy-800 mb-3 sm:mb-4 flex items-center">
+            <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
             Featured Products
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+          <div className="grid-responsive-3">
             {products.filter(p => p.featured).slice(0, 3).map((product) => (
               <Link 
                 key={product.id} 
@@ -504,7 +508,7 @@ export default function MarketplacePage() {
           </h2>
         </div>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
+        <div className="grid-responsive-3">
           {displayedProducts.map((product) => (
             <Link 
               key={product.id} 

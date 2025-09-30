@@ -175,31 +175,31 @@ export default function ProductDetailPage() {
   };
 
   return (
-    <div className="p-6 pb-20 lg:pb-6">
+    <div className="container-responsive pb-20 lg:pb-6 min-h-screen">
       {/* Breadcrumb */}
-      <div className="flex items-center space-x-2 text-sm text-neutral-600 mb-6">
-        <Link href="/marketplace" className="hover:text-burgundy-600">Marketplace</Link>
+      <div className="flex items-center space-x-2 text-xs sm:text-sm text-neutral-600 mb-4 sm:mb-6 overflow-x-auto">
+        <Link href="/marketplace" className="hover:text-burgundy-600 whitespace-nowrap">Marketplace</Link>
         <span>/</span>
-        <Link href={`/marketplace?category=${product.category}`} className="hover:text-burgundy-600 capitalize">
+        <Link href={`/marketplace?category=${product.category}`} className="hover:text-burgundy-600 capitalize whitespace-nowrap">
           {product.category}
         </Link>
         <span>/</span>
-        <span className="text-burgundy-800">{product.title}</span>
+        <span className="text-burgundy-800 truncate">{product.title}</span>
       </div>
 
       {/* Back Button */}
       <Link 
         href="/marketplace"
-        className="inline-flex items-center text-burgundy-600 hover:text-burgundy-800 mb-6 font-medium"
+        className="inline-flex items-center text-burgundy-600 hover:text-burgundy-800 mb-4 sm:mb-6 font-medium text-sm sm:text-base"
       >
-        <ArrowLeft className="w-4 h-4 mr-2" />
+        <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
         Back to Marketplace
       </Link>
 
-      <div className="grid lg:grid-cols-3 gap-8">
+      <div className="grid lg:grid-cols-3 gap-6 lg:gap-8">
         {/* Left Column - Images */}
         <div className="lg:col-span-2">
-          <div className="mama-card p-6">
+          <div className="mama-card p-4 sm:p-6">
             {/* Main Image */}
             <div className="relative mb-4 bg-gradient-to-br from-orange-200 to-red-200 rounded-xl overflow-hidden">
               <div className="aspect-square relative">
@@ -475,7 +475,7 @@ export default function ProductDetailPage() {
           </div>
 
           {/* Seller Card */}
-          <div className="mama-card p-6">
+          <div className="mama-card p-4 sm:p-6">
             <h4 className="font-semibold text-burgundy-800 mb-4">About the Seller</h4>
             
             <div className="flex items-start space-x-3 mb-4">

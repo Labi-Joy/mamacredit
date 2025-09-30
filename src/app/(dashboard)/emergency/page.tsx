@@ -305,7 +305,7 @@ export default function EmergencyPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-amber-50 via-cream to-orange-50">
       {/* Header */}
-      <header className="bg-white/80 backdrop-blur-md border-b border-orange-100 sticky top-0 z-40">
+      {/* <header className="bg-white/80 backdrop-blur-md border-b border-orange-100 sticky top-0 z-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center space-x-4">
@@ -324,7 +324,7 @@ export default function EmergencyPage() {
             </Link>
           </div>
         </div>
-      </header>
+      </header> */}
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         
