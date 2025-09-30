@@ -501,21 +501,22 @@ export default function MarketplacePage() {
 
       {/* All Products Grid */}
       <div className="mb-8">
-        <div className="flex justify-between items-center mb-6">
-          <h2 className="text-xl font-semibold text-burgundy-800">
-            {selectedCategory === 'all' ? 'All Products' : categories.find(c => c.id === selectedCategory)?.name}
-            <span className="text-neutral-600 ml-2">({sortedProducts.length})</span>
+        <div className="flex justify-between items-center mb-4 sm:mb-6">
+          <h2 className="text-lg sm:text-xl font-semibold text-burgundy-800">
+            <span className="hidden sm:inline">{selectedCategory === 'all' ? 'All Products' : categories.find(c => c.id === selectedCategory)?.name}</span>
+            <span className="sm:hidden">{selectedCategory === 'all' ? 'All' : categories.find(c => c.id === selectedCategory)?.name.split(' ')[0]}</span>
+            <span className="text-neutral-600 ml-2 text-sm sm:text-base">({sortedProducts.length})</span>
           </h2>
         </div>
         
         <div className="grid-responsive-3">
           {displayedProducts.map((product) => (
-            <Link 
-              key={product.id} 
+            <Link
+              key={product.id}
               href={`/marketplace/product/${product.id}`}
               className="mama-card p-0 overflow-hidden hover:scale-[1.02] transition-transform group"
             >
-              <div className="relative h-40 md:h-48 bg-gradient-to-br from-orange-200 to-red-200 overflow-hidden">
+              <div className="relative h-40 sm:h-44 md:h-48 bg-gradient-to-br from-orange-200 to-red-200 overflow-hidden">
                 <img
                   src={product.images[0]}
                   alt={product.title}
@@ -525,16 +526,16 @@ export default function MarketplacePage() {
                   }}
                 />
                 {product.discount > 0 && (
-                  <div className="absolute top-3 left-3 bg-red-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
+                  <div className="absolute top-2 left-2 bg-red-500 text-white px-2 py-0.5 sm:py-1 rounded-full text-xs font-semibold">
                     -{product.discount}%
                   </div>
                 )}
-                <button className="absolute top-3 right-3 bg-white/90 p-2 rounded-full hover:bg-white transition-colors">
-                  <Heart className="w-4 h-4 text-neutral-600 group-hover:text-red-500 transition-colors" />
+                <button className="absolute top-2 right-2 bg-white/90 p-1.5 sm:p-2 rounded-full hover:bg-white transition-colors">
+                  <Heart className="w-3 h-3 sm:w-4 sm:h-4 text-neutral-600 group-hover:text-red-500 transition-colors" />
                 </button>
-                
-                <div className="absolute bottom-3 left-3 right-3">
-                  <div className="bg-white/90 backdrop-blur-sm rounded-lg p-2">
+
+                <div className="absolute bottom-2 left-2 right-2">
+                  <div className="bg-white/90 backdrop-blur-sm rounded-lg p-1.5 sm:p-2">
                     <div className="flex items-center justify-between text-xs">
                       <span className="text-neutral-600">{product.sold} sold</span>
                       <div className="flex items-center">
@@ -545,64 +546,64 @@ export default function MarketplacePage() {
                   </div>
                 </div>
               </div>
-              
-              <div className="p-4">
-                <div className="flex items-center gap-2 mb-2">
-                  {product.seller.badges.slice(0, 2).map((badge, index) => (
-                    <span key={index} className="text-xs bg-yellow-100 text-yellow-700 px-2 py-1 rounded-full">
+
+              <div className="p-3 sm:p-4">
+                <div className="flex items-center gap-1 sm:gap-2 mb-2 overflow-x-auto scrollbar-hide">
+                  {product.seller.badges.slice(0, 1).map((badge, index) => (
+                    <span key={index} className="text-xs bg-yellow-100 text-yellow-700 px-2 py-0.5 sm:py-1 rounded-full whitespace-nowrap">
                       {badge}
                     </span>
                   ))}
                 </div>
-                
-                <h3 className="font-semibold text-burgundy-800 mb-2 line-clamp-2">
+
+                <h3 className="font-semibold text-sm sm:text-base text-burgundy-800 mb-1 sm:mb-2 line-clamp-2 min-h-[2.5rem] sm:min-h-[3rem]">
                   {product.title}
                 </h3>
-                
-                <p className="text-sm text-neutral-600 mb-3 line-clamp-2">
+
+                <p className="text-xs sm:text-sm text-neutral-600 mb-2 sm:mb-3 line-clamp-2 hidden sm:block">
                   {product.description}
                 </p>
-                
-                <div className="flex items-center justify-between mb-3">
-                  <div className="flex items-center">
+
+                <div className="flex items-center justify-between mb-2 sm:mb-3 flex-wrap gap-1">
+                  <div className="flex items-center flex-wrap gap-1">
                     {product.originalPrice && (
-                      <span className="text-neutral-500 line-through text-sm mr-2">
+                      <span className="text-neutral-500 line-through text-xs sm:text-sm">
                         {formatCurrency(product.originalPrice)}
                       </span>
                     )}
-                    <span className="text-lg font-bold text-burgundy-800">
+                    <span className="text-base sm:text-lg font-bold text-burgundy-800">
                       {formatCurrency(product.price)}
                     </span>
                   </div>
                   <div className="flex items-center">
-                    <Star className="w-4 h-4 text-yellow-500 mr-1" />
-                    <span className="text-sm font-semibold">{product.seller.rating}</span>
-                    <span className="text-xs text-neutral-500 ml-1">({product.seller.totalReviews})</span>
+                    <Star className="w-3 h-3 sm:w-4 sm:h-4 text-yellow-500 mr-1" />
+                    <span className="text-xs sm:text-sm font-semibold">{product.seller.rating}</span>
+                    <span className="text-xs text-neutral-500 ml-1 hidden sm:inline">({product.seller.totalReviews})</span>
                   </div>
                 </div>
-                
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center">
-                    <div className="w-6 h-6 bg-gradient-to-br from-purple-400 to-pink-500 rounded-full mr-2"></div>
-                    <span className="text-sm text-neutral-600">{product.seller.name}</span>
+
+                <div className="flex items-center justify-between mb-2 sm:mb-3">
+                  <div className="flex items-center min-w-0 flex-1">
+                    <div className="w-5 h-5 sm:w-6 sm:h-6 bg-gradient-to-br from-purple-400 to-pink-500 rounded-full mr-2 flex-shrink-0"></div>
+                    <span className="text-xs sm:text-sm text-neutral-600 truncate">{product.seller.name}</span>
                   </div>
-                  <div className="flex items-center text-xs text-neutral-500">
+                  <div className="flex items-center text-xs text-neutral-500 ml-2 hidden sm:flex">
                     <Clock className="w-3 h-3 mr-1" />
                     {formatTime(product.createdAt)}
                   </div>
                 </div>
-                
-                <div className="mt-3 pt-3 border-t border-orange-100">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center text-xs text-neutral-500">
-                      <MapPin className="w-3 h-3 mr-1" />
-                      {product.location}
+
+                <div className="pt-2 sm:pt-3 border-t border-orange-100">
+                  <div className="flex items-center justify-between text-xs">
+                    <div className="flex items-center text-neutral-500 min-w-0 flex-1 mr-2">
+                      <MapPin className="w-3 h-3 mr-1 flex-shrink-0" />
+                      <span className="truncate">{product.location.split(',')[0]}</span>
                     </div>
-                    <div className="flex items-center text-xs text-neutral-500">
+                    <div className="flex items-center text-neutral-500 whitespace-nowrap">
                       <span className={`w-2 h-2 rounded-full mr-1 ${
                         product.inStock ? 'bg-green-500' : 'bg-red-500'
                       }`}></span>
-                      {product.inStock ? `${product.stockCount} left` : 'Out of stock'}
+                      {product.inStock ? `${product.stockCount}` : 'Out'}
                     </div>
                   </div>
                 </div>

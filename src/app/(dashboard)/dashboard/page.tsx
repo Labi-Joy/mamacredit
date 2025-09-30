@@ -138,34 +138,6 @@ export default function DashboardPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-amber-50 via-cream to-orange-50">
-      {/* Header */}
-      <header className="bg-white/80 backdrop-blur-md border-b border-orange-100 sticky top-0 z-40">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center space-x-4">
-              <div className="w-10 h-10 bg-gradient-to-br from-orange-400 to-red-500 rounded-xl flex items-center justify-center">
-                <Crown className="w-6 h-6 text-white" />
-              </div>
-              <div>
-                <h1 className="font-bold text-lg text-burgundy-800">MamaCredit</h1>
-                <p className="text-xs text-neutral-600">Your sisterhood savings</p>
-              </div>
-            </div>
-            
-            <div className="flex items-center space-x-3">
-              <button className="p-2 hover:bg-orange-50 rounded-lg transition-colors relative">
-                <Bell className="w-5 h-5 text-neutral-600" />
-                <div className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full"></div>
-              </button>
-              <button className="p-2 hover:bg-orange-50 rounded-lg transition-colors">
-                <Settings className="w-5 h-5 text-neutral-600" />
-              </button>
-              <div className="w-8 h-8 bg-gradient-to-br from-purple-400 to-pink-500 rounded-full"></div>
-            </div>
-          </div>
-        </div>
-      </header>
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Welcome Section */}
         <div className="mb-8">

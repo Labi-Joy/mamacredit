@@ -1,10 +1,9 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { useParams, useRouter } from 'next/navigation';
+import React, { useState } from 'react';
+import { useParams } from 'next/navigation';
 import Link from 'next/link';
-import { 
-  ArrowLeft,
+import {
   Users,
   Calendar,
   Coins,
@@ -16,21 +15,19 @@ import {
   Clock,
   Heart,
   MessageCircle,
-  Share2,
   AlertCircle,
   CheckCircle,
   Gift,
   Plus,
-  Settings,
-  UserPlus,
-  ChevronRight,
   Phone,
-  Mail
+  ArrowLeft,
+  Share2,
+  Settings,
+  UserPlus
 } from 'lucide-react';
 
 export default function CircleDetailPage() {
   const params = useParams();
-  const router = useRouter();
   const [activeTab, setActiveTab] = useState('overview');
   const [showJoinModal, setShowJoinModal] = useState(false);
 

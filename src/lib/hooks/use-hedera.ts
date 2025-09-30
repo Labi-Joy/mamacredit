@@ -1,6 +1,20 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
+import {
+  Client,
+  AccountId,
+  PrivateKey,
+  AccountBalanceQuery,
+  TransferTransaction,
+  Hbar,
+  AccountInfoQuery
+} from '@hashgraph/sdk';
+
+// ===== CONFIGURATION =====
+const HEDERA_NETWORK = process.env.NEXT_PUBLIC_HEDERA_NETWORK || 'testnet';
+const OPERATOR_ID = process.env.NEXT_PUBLIC_HEDERA_ACCOUNT_ID;
+const OPERATOR_KEY = process.env.HEDERA_PRIVATE_KEY;
 
 // ===== TYPES =====
 export interface WalletState {
@@ -41,7 +55,7 @@ export interface CircleData {
 }
 
 // ===== CUSTOM HOOK =====
-export function useHedera() {
+export function useHedera(enableRealMode: boolean = false) {
   const [walletState, setWalletState] = useState<WalletState>({
     isConnected: false,
     accountId: null,
@@ -52,6 +66,32 @@ export function useHedera() {
 
   const [userProfile, setUserProfile] = useState<UserProfile | null>(null);
   const [userCircles, setUserCircles] = useState<CircleData[]>([]);
+  const [client, setClient] = useState<Client | null>(null);
+
+  // Initialize Hedera client
+  useEffect(() => {
+    if (enableRealMode && OPERATOR_ID && OPERATOR_KEY) {
+      try {
+        const hederaClient = HEDERA_NETWORK === 'testnet'
+          ? Client.forTestnet()
+          : Client.forMainnet();
+
+        hederaClient.setOperator(
+          AccountId.fromString(OPERATOR_ID),
+          PrivateKey.fromString(OPERATOR_KEY)
+        );
+
+        setClient(hederaClient);
+        console.log('✅ Hedera client initialized for', HEDERA_NETWORK);
+      } catch (error) {
+        console.error('❌ Failed to initialize Hedera client:', error);
+        setWalletState(prev => ({
+          ...prev,
+          error: 'Failed to initialize Hedera connection'
+        }));
+      }
+    }
+  }, [enableRealMode]);
 
   // ===== WALLET OPERATIONS =====
 
@@ -59,29 +99,59 @@ export function useHedera() {
     setWalletState(prev => ({ ...prev, isLoading: true, error: null }));
 
     try {
-      // Mock connection
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      if (enableRealMode && client && OPERATOR_ID) {
+        // Real Hedera connection
+        const targetAccountId = accountId || OPERATOR_ID;
 
-      setWalletState({
-        isConnected: true,
-        accountId: accountId || '0.0.123456',
-        balance: {
-          hbar: 125.5634,
-          mama: 2500,
-          usd: 12.55
-        },
-        isLoading: false,
-        error: null
-      });
+        // Get real account balance
+        const accountBalance = await new AccountBalanceQuery()
+          .setAccountId(targetAccountId)
+          .execute(client);
+
+        const hbarBalance = accountBalance.hbars.toTinybars().toNumber() / 100_000_000;
+        const usdBalance = hbarBalance * 0.10; // Mock USD conversion
+
+        setWalletState({
+          isConnected: true,
+          accountId: targetAccountId,
+          balance: {
+            hbar: parseFloat(hbarBalance.toFixed(6)),
+            mama: 0, // Will be fetched from HTS token when implemented
+            usd: parseFloat(usdBalance.toFixed(2))
+          },
+          isLoading: false,
+          error: null
+        });
+
+        console.log('✅ Connected to Hedera account:', targetAccountId);
+        console.log('💰 Balance:', hbarBalance.toFixed(6), 'HBAR');
+
+      } else {
+        // Mock connection for demo mode
+        await new Promise(resolve => setTimeout(resolve, 1000));
+
+        setWalletState({
+          isConnected: true,
+          accountId: accountId || '0.0.123456',
+          balance: {
+            hbar: 125.5634,
+            mama: 2500,
+            usd: 12.55
+          },
+          isLoading: false,
+          error: null
+        });
+      }
 
     } catch (error) {
+      console.error('Error connecting wallet:', error);
       setWalletState(prev => ({
         ...prev,
         isLoading: false,
         error: error instanceof Error ? error.message : 'Failed to connect wallet'
       }));
     }
-  }, []);
+  }, [enableRealMode, client]);
 
   const disconnectWallet = useCallback(() => {
     setWalletState({
@@ -96,9 +166,32 @@ export function useHedera() {
   }, []);
 
   const refreshBalance = useCallback(async () => {
-    // Mock refresh
-    console.log('Refreshing balance...');
-  }, []);
+    if (enableRealMode && client && walletState.accountId) {
+      try {
+        const accountBalance = await new AccountBalanceQuery()
+          .setAccountId(walletState.accountId)
+          .execute(client);
+
+        const hbarBalance = accountBalance.hbars.toTinybars().toNumber() / 100_000_000;
+        const usdBalance = hbarBalance * 0.10;
+
+        setWalletState(prev => ({
+          ...prev,
+          balance: {
+            hbar: parseFloat(hbarBalance.toFixed(6)),
+            mama: prev.balance.mama, // Keep existing MAMA balance
+            usd: parseFloat(usdBalance.toFixed(2))
+          }
+        }));
+
+        console.log('✅ Balance refreshed:', hbarBalance.toFixed(6), 'HBAR');
+      } catch (error) {
+        console.error('❌ Error refreshing balance:', error);
+      }
+    } else {
+      console.log('🔄 Refreshing balance (demo mode)...');
+    }
+  }, [enableRealMode, client, walletState.accountId]);
 
   // ===== USER OPERATIONS =====
 
@@ -155,11 +248,64 @@ export function useHedera() {
     return 'mock_transaction_id';
   }, []);
 
+  // ===== REAL HEDERA TRANSACTIONS =====
+
+  const sendHbar = useCallback(async (toAccountId: string, amount: number) => {
+    if (!enableRealMode || !client || !OPERATOR_ID) {
+      console.log('🎭 Demo mode: Would send', amount, 'HBAR to', toAccountId);
+      return 'demo_transaction_id';
+    }
+
+    try {
+      const transferTransaction = new TransferTransaction()
+        .addHbarTransfer(AccountId.fromString(OPERATOR_ID), Hbar.fromTinybars(-amount * 100_000_000))
+        .addHbarTransfer(toAccountId, Hbar.fromTinybars(amount * 100_000_000))
+        .setTransactionMemo(`MamaCredit demo: ${amount} HBAR`);
+
+      const response = await transferTransaction.execute(client);
+      const receipt = await response.getReceipt(client);
+
+      console.log('✅ HBAR transfer successful!');
+      console.log('📄 Transaction ID:', response.transactionId.toString());
+      console.log('✔️ Status:', receipt.status.toString());
+
+      // Refresh balance after transaction
+      await refreshBalance();
+
+      return response.transactionId.toString();
+
+    } catch (error) {
+      console.error('❌ Error sending HBAR:', error);
+      throw error;
+    }
+  }, [enableRealMode, client, refreshBalance]);
+
+  const testConnection = useCallback(async () => {
+    if (!enableRealMode || !client || !OPERATOR_ID) {
+      return { success: false, message: 'Demo mode - no real connection' };
+    }
+
+    try {
+      await new AccountInfoQuery()
+        .setAccountId(OPERATOR_ID)
+        .execute(client);
+
+      return { success: true, message: 'Hedera connection successful!' };
+    } catch (error) {
+      return { success: false, message: 'Hedera connection failed: ' + error };
+    }
+  }, [enableRealMode, client]);
+
   return {
     // State
     walletState,
     userProfile,
     userCircles,
+
+    // Mode information
+    isRealMode: enableRealMode,
+    isClientReady: !!client,
+    operatorAccountId: OPERATOR_ID,
 
     // Wallet operations
     connectWallet,
@@ -177,6 +323,10 @@ export function useHedera() {
     // Emergency loans
     requestEmergencyLoan,
     voteOnLoan,
+
+    // Real Hedera transactions
+    sendHbar,
+    testConnection,
 
     // Utilities
     currencyHelpers: {

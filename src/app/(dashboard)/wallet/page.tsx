@@ -1,11 +1,9 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
+import React, { useState } from 'react';
 import {
   Wallet,
   TrendingUp,
-  TrendingDown,
   Send,
   Download,
   Copy,
@@ -15,7 +13,6 @@ import {
   Star,
   Clock,
   CheckCircle,
-  AlertCircle,
   Eye,
   EyeOff,
   RefreshCw,
@@ -31,6 +28,8 @@ import {
   WifiOff
 } from 'lucide-react';
 import { useHedera } from '@/lib/hooks/use-hedera';
+import { SimpleWalletConnect } from '@/components/wallet/simple-wallet-connect';
+import { EnhancedWalletConnect } from '@/components/wallet/enhanced-wallet-connect';
 
 export default function WalletPage() {
   const [isBalanceVisible, setIsBalanceVisible] = useState(true);
@@ -40,7 +39,7 @@ export default function WalletPage() {
   const [isDeveloperMode, setIsDeveloperMode] = useState(false);
 
   // Real Hedera integration hook
-  const hedera = useHedera();
+  const hedera = useHedera(isDeveloperMode);
 
   // Mock wallet data - in production, this comes from Hedera SDK
   const walletData = {
@@ -638,8 +637,45 @@ export default function WalletPage() {
             </div>
           </div>
 
+          {/* Real Wallet Demo */}
+          <div className="mama-card mt-5  p-6 border-2 border-dashed border-blue-200 bg-blue-50/50">
+            <div className="flex items-center justify-between mb-4">
+              <div className="flex items-center">
+                <Wallet className="w-6 h-6 text-blue-600 mr-3" />
+                <div>
+                  <h3 className="font-bold text-burgundy-800">Real Wallet Demo</h3>
+                  <p className="text-sm text-neutral-600">Connect MetaMask & other wallets</p>
+                </div>
+              </div>
+              <button
+                onClick={() => setShowRealIntegration(!showRealIntegration)}
+                className={`flex items-center px-4 py-2 rounded-lg font-medium transition-all ${
+                  showRealIntegration
+                    ? 'bg-blue-500 text-white shadow-lg'
+                    : 'bg-white text-blue-600 border border-blue-200 hover:bg-blue-50'
+                }`}
+              >
+                <Wallet className="w-4 h-4 mr-2" />
+                {showRealIntegration ? 'Live' : 'Demo'}
+              </button>
+            </div>
+
+            {showRealIntegration ? (
+              <EnhancedWalletConnect />
+            ) : (
+              <div className="text-center py-6">
+                <div className="text-neutral-600 mb-2">
+                  👆 Toggle Real Wallet Demo to connect your actual MetaMask wallet
+                </div>
+                <div className="text-xs text-neutral-500">
+                  (Works with Hedera Testnet)
+                </div>
+              </div>
+            )}
+          </div>
+
           {/* Developer Mode Integration Demo */}
-          <div className="mama-card p-6 border-2 border-dashed border-orange-200 bg-orange-50/50">
+          <div className="mama-card mt-3 p-6 border-2 border-dashed border-orange-200 bg-orange-50/50">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center">
                 <Code className="w-6 h-6 text-orange-600 mr-3" />

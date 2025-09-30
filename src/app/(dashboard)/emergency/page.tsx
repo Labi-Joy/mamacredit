@@ -2,23 +2,15 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { 
-  ArrowLeft,
-  Plus,
+import {
   AlertCircle,
   Clock,
-  Users,
   Heart,
   Shield,
   CheckCircle,
-  XCircle,
   Eye,
   MessageCircle,
-  Phone,
-  Filter,
-  Search,
   TrendingUp,
-  Calendar,
   Crown,
   ThumbsUp,
   ThumbsDown,

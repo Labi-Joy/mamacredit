@@ -2,19 +2,17 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { 
-  Heart, 
-  Users, 
-  Shield, 
-  Coins, 
-  ChevronRight, 
+import {
+  Heart,
+  Users,
+  Shield,
+  Coins,
+  ChevronRight,
   Star,
   TrendingUp,
-  HandHeart,
   Crown,
   ArrowRight,
-  Play,
-  Check
+  Play
 } from 'lucide-react';
 
 export default function LandingPage() {
@@ -80,12 +78,6 @@ export default function LandingPage() {
     }
   ];
 
-  const stats = [
-    { number: "10,000+", label: "Women Empowered", icon: <Heart className="w-6 h-6" /> },
-    { number: "₦2.5B", label: "Total Saved", icon: <TrendingUp className="w-6 h-6" /> },
-    { number: "500+", label: "Active Circles", icon: <Users className="w-6 h-6" /> },
-    { number: "99.7%", label: "Loan Repayment Rate", icon: <Star className="w-6 h-6" /> }
-  ];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-amber-50 via-cream to-orange-50">
@@ -387,7 +379,7 @@ export default function LandingPage() {
           </div>
           
           <div className="border-t border-neutral-800 mt-12 pt-8 text-center text-neutral-400">
-            <p>&copy; 2025 MamaCredit. Built with ❤️ by Labi-dev for <b>African women</b>.</p>
+            <p>&copy; 2025 MamaCredit. Built with ❤️ by Labi-dev for <b>African women</b>. Powered by Hedera</p>
           </div>
         </div>
       </footer>
